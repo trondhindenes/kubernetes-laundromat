@@ -1,11 +1,8 @@
-import os
-import json
-import time
-import datetime
-import pytz
-from kubernetes import config, client
-from laundromat.helpers import LaundromatHelpers
 import logging
+import os
+import time
+from kubernetes import client
+from laundromat.helpers import LaundromatHelpers
 
 
 def main(do_dry_run=True, minimum_pod_count=3, minimum_pod_age_minutes=3600,

@@ -6,7 +6,7 @@ RUN apt-get update \
     && apt-get -y autoremove \
     && rm -rf /var/lib/apt/lists/*
 RUN python3 get-pip.py
-RUN pip install kubernetes==3.0.0
+RUN pip install -r requirements.txt
 WORKDIR /app
 COPY . /app
 CMD ["python3", "-u", "laundromat.py"]

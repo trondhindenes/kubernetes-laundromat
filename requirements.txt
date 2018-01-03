@@ -1,0 +1,2 @@
+pytz
+kubernetes==3.0.0
