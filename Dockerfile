@@ -9,4 +9,4 @@ RUN python3 get-pip.py
 RUN pip install kubernetes==3.0.0
 WORKDIR /app
 COPY . /app
-CMD ["python3", "-u", "laundromat.py"]%
+CMD ["python3", "-u", "laundromat.py"]
