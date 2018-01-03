@@ -1,5 +1,7 @@
 # Kubernetes-Laundromat
 
+![laundry-43882_960_720](https://user-images.githubusercontent.com/1747120/34543243-3fa1ff1e-f0e0-11e7-8135-7fbbee2a6d0d.png)
+
 Laundromat is a continously running container that will look for and delete old pods in your Kubernetes cluster.
 
 You can control Laundromat by settings the following environment variables:
