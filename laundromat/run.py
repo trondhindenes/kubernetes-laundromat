@@ -100,6 +100,7 @@ def main(do_dry_run=True, minimum_pod_count=3, minimum_pod_age_minutes=3600,
                 logging.info(
                     'not recycling pod because: Pod {} is not older than minimum pod age ({})'
                         .format(pod_name, minimum_pod_age_minutes))
+                do_recycle_pod = False
 
             if do_recycle_pod:
                 deployment_recycle_operation_count += 1
