@@ -1,2 +1,3 @@
 pytz
+requests
 kubernetes==3.0.0

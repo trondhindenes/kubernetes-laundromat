@@ -26,6 +26,8 @@ spec:
       - image: trondhindenes/kubernetes-laundromat
         name: kubernetes-laundromat
         env:
+        - name: DRY_RUN
+          value: 'true'
         - name: MINIMUM_POD_COUNT
           value: '2'
       - image: palmstonegames/kubectl-proxy

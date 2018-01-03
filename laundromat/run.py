@@ -1,7 +1,9 @@
 import logging
 import os
 import time
+import requests
 from kubernetes import client
+
 from laundromat.helpers import LaundromatHelpers
 
 
@@ -132,6 +134,24 @@ def loop():
 
         if dry_run is False:
             logging.warning('DRY_RUN is OFF, this means that pods will potentially get deleted!!')
+
+        api_is_ok = False
+        test_url = 'http://localhost:8001/api'
+        counter = 0
+        while api_is_ok is False:
+            if counter > 40:
+                err_msg = 'unable to contact kubernetes api at url {}'.format(test_url)
+                logging.error(err_msg)
+                raise Exception(err_msg)
+            try:
+                test_reg = requests.get(test_url)
+                test_reg.raise_for_status()
+                api_is_ok = True
+                logging.info('got in touch with Kubernetes. Iz ok.')
+            except:
+                pass
+            counter = counter + 1
+            time.sleep(0.5)
 
         main(dry_run, min_pod_count, minimum_pod_age_minutes, ignore_namespaces, max_op_per_deployment,
              ignore_deployment_names)
