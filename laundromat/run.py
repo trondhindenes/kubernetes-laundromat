@@ -16,6 +16,7 @@ def main(do_dry_run=True, minimum_pod_count=3, minimum_pod_age_minutes=3600,
     all_deployments = extensions_client.list_deployment_for_all_namespaces()
 
     for deployment in all_deployments.items:
+        deployment_name = deployment.metadata.name
         deployment_has_correct_scale = False
         deployment_has_performed_op_count = 0
 

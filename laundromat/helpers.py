@@ -28,7 +28,7 @@ class LaundromatHelpers():
             this_rs = replica_sets.items[0]
         else:
             this_rs = \
-                sorted(replica_sets.items, key=lambda x: x.metadata.annotations['deployment.kubernetes.io/revision'],
+                sorted(replica_sets.items, key=lambda x: int(x.metadata.annotations['deployment.kubernetes.io/revision']),
                        reverse=True)[0]
         #print('   {}'.format(this_rs.metadata.name))
         if this_rs:
