@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kubernetes-laundromat
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: kubernetes-laundromat
+  labels:
+    k8s-app: kubernetes-laundromat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: kubernetes-laundromat
+  template:
+    metadata:
+      labels:
+        k8s-app: kubernetes-laundromat
+        name: kubernetes-laundromat
+    spec:
+      serviceAccountName: kubernetes-laundromat
+      containers:
+      - image: trondhindenes/kubernetes-laundromat
+        name: kubernetes-laundromat
+        env:
+        - name: MINIMUM_POD_COUNT
+          value: '2'
+      - image: palmstonegames/kubectl-proxy
+        name: kubectl-proxy
